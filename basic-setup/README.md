@@ -1,3 +1,10 @@
+OpenGL Demo
+===========
+
+This demo is intended to show you a basic OpenGL setup that paints a white triangle with the help of a vertex and a fragment shader. No classes or functions where coded in order to show the sequence of steps required to get everything running.
+
+This implementation is far from being the most efficient one, but as i said this is only to show how things work.
+
 Mac OS X
 ========
 
