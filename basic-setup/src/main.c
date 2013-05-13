@@ -1,7 +1,7 @@
 /*
 	OpenGl basic setup created by Francisco Rojas about.me/franciscoalexis
 	
-	based on Thomas Dalling's example - http://tomdalling.com/
+	based on Thomas Dalling's examples - http://tomdalling.com/
 
 	[Fancy licence statement here].
 */
@@ -48,7 +48,8 @@ int main(){
 		/*
 		* The first argument is the vertex shader ID.
 		* The second argument is how many source strings you're using. 
-		* Caution: the GLSL compiler expects one long string per source file. Much like in C++, you can have more than one source file per shader. However, it will treat each string in the array as a source file.
+		* Caution: the GLSL compiler expects one long string per source file. Much like in C++, you can have 
+		* more than one source file per shader. However, it will treat each string in the array as a source file.
 		* The third argument is the pointer to the array of shader source strings. 
 		* The last argument is the array of string lengths for each of the shader source strings. 
 		* If this is null, the GLSL source compiler assumes each string is null terminated.
@@ -62,10 +63,7 @@ int main(){
 			glDeleteShader(shader);
 			return 1;
 		}
-	}else{
-		printf("%s\n","Aw man! glCreateShader failed");
-		return 1;
-	}
+	}else{ printf("%s\n","Aw man! glCreateShader failed"); return 1; }
 
 	// If everything went well we attach the shader to our program
 	glAttachShader(program,shader);
@@ -82,10 +80,7 @@ int main(){
 			glDeleteShader(fragmentShader);
 			return 1;
 		}
-	}else{
-		printf("%s\n","Aw man! glCreateShader failed");
-		return 1;
-	}
+	}else{ printf("%s\n","Aw man! glCreateShader failed");return 1; }
 	glAttachShader(program,fragmentShader);
 
 	// Link program
@@ -94,12 +89,11 @@ int main(){
 	int programStatus = GL_TRUE;
 	glGetProgramiv(program,GL_LINK_STATUS,&programStatus);
 
-	if( programStatus != GL_TRUE ){
-		printf("%s\n","Boomer! glLinkProgram failed");
-		return 1;	
-	}
+	if( programStatus != GL_TRUE ){ printf("%s\n","Boomer! glLinkProgram failed");return 1; }
 
 	// This is for the vertices that will form a triangle to draw on the screen
+	// if you don't know the concept of VAO or VBO you can find a very good
+	// explanation at homas Dalling's site
 	GLuint gVAO = 0;
 	GLuint gVBO = 0;
 	// make and bind the VAO
@@ -121,12 +115,12 @@ int main(){
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 
 	// Connect the xyz to the "vert" attribute of the vertex shader
-	const GLchar* attribName = "vert";
-	GLint attrib = glGetAttribLocation(program, attribName);
-	if(attrib == -1){printf("%s\n","Noooo! unable to get attribute"); return 1;}
-	glEnableVertexAttribArray(attrib);
+	const GLchar* attributeName = "vert";
+	GLint attribute = glGetAttribLocation(program, attributeName);
+	if(attribute == -1){ printf("%s\n","Noooo! unable to get attribute"); return 1; }
+	glEnableVertexAttribArray(attribute);
 	// attrib index, size, type, stride, pointer
-	glVertexAttribPointer(attrib, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(attribute, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
 	// unbind the VBO and VAO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
