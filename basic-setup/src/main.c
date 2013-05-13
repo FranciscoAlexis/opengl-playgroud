@@ -18,7 +18,7 @@ int main(){
 	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MAJOR, 3);
 	glfwOpenWindowHint(GLFW_OPENGL_VERSION_MINOR, 2);
 	glfwOpenWindowHint(GLFW_WINDOW_NO_RESIZE, GL_TRUE);
-	if(!glfwOpenWindow(720, 405, 8, 8, 8, 8, 0, 0, GLFW_WINDOW)){
+	if(!glfwOpenWindow(1024, 768, 8, 8, 8, 8, 0, 0, GLFW_WINDOW)){
 		printf("%s\n","glfwOpenWindow failed. Can your silly hardware handle OpenGL 3.2?");
 		return 1;
 	}
@@ -134,7 +134,7 @@ int main(){
 
 	// while window is open
 	while(glfwGetWindowParam(GLFW_OPENED)){
-		// paint everything black (well, clear with black)
+		// paint everything black (well, clear everything with black)
 		glClearColor(0, 0, 0, 1); 
 		glClear(GL_COLOR_BUFFER_BIT);
 		//Tell OpenGL to use our shaders
