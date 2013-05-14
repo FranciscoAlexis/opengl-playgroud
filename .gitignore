@@ -2,3 +2,7 @@
 basic-setup/bin/OpenGLDemo
 
 basic-setup/src/main.o
+
+basic-texture/bin/OpenGLDemo
+
+*.o
